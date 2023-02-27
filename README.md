@@ -247,5 +247,58 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 가장 기본적인 tooltips 디자인이며 마우스를 올려놓으면 나오는 설명문이라고 생각하면 편하다.
 js를 추가하여 리셋을 시켜줘야 사용이 가능하다
 ```
+## *bootstrap-npm 설치
+```plaintext
+1. npm init -y 를 입력해서 Package.json 다운로드 받기.
+2. npm i -D parcel-bundler 를 입력해서 개발의존성으로 설치
+3. package.json 에서 script 부분에 해당 내용 추가
+    "dev": "parcel index.html", 
+    "build": "parcel build index.html"
+4. npm install bootstrap@5.3.0-alpha1 를 입력해서 부트스트랩 일반의존성으로 설치
+5. main.js 에 import bootstrap from 'bootstrap/dist/js/bootstrap.bundle' 추가
+6. main.scss 에 @import "../node_modules/bootstrap/scss/bootstrap.scss" 추가
+```
 
+## *bootstrap 커스텀마이징
+```scss
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/mixins";
 
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  yellowgreen,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+```
+```plaintext
+bootstrap 홈페이지에서 따로 가져올 때(function, variables, mixins...) 필수로 필요한 부분 복사해서 scss파일에 붙여넣기
+위 와같이 원하는 속성을 변경해서 사용한다.
+```
+
+## *Optimize
+```plaintext
+bootstrap 홈페이지에서 Customize 안에 있는 Optimize클릭 그러면 내가 사용하고 싶은 기능만 골라서 추가를 하면된다.
+```
+```js
+import Dropdown from 'bootstrap/js/dist/dropdown'
+
+const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+const dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+  return new Dropdown(dropdownToggleEl)
+})
+```
+```plaintext
+js 는 가져온 뒤 초기화를 설정해줘야한다. 사용하고싶은 기능 클릭 후 오른쪽에 있는 Usage -> Via JavaScript 
+만약 초기화가 없다면 오른쪽의 Usage 부분이 없다.
+클릭해서 초기화 문장 복사 후 붙여넣기 가져온뒤  return 부분에 있는 생성자 수정
+dropdown 같은 경우에는 popperjs 가 필요함으로 npm i @popperjs.core 입력하여 npm 다운로드한다.
+```

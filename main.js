@@ -1,15 +1,13 @@
+import Dropdown from 'bootstrap/js/dist/dropdown'
+import Modal from 'bootstrap/js/dist/modal'
+
+//dropdown
+const dropdownElementList = [].slice.call(document.querySelectorAll('.dropdown-toggle'))
+const dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
+  return new Dropdown(dropdownToggleEl)
+})
 
 //modal
-// const emailInputEl = document.querySelector('#exampleInputEmail1');
-// const modalEl = document.querySelector('#exampleModal');
-
-// modalEl.addEventListener('shown.bs.modal', function () {
-//     emailInputEl.focus();
-// })
-//modal
-
-
-var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-  return new bootstrap.Tooltip(tooltipTriggerEl)
+const myModal = new Modal(document.getElementById('#exampleModal'), {
+  backdrop: 'static'
 })
