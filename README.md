@@ -299,6 +299,6 @@ const dropdownList = dropdownElementList.map(function (dropdownToggleEl) {
 ```plaintext
 js 는 가져온 뒤 초기화를 설정해줘야한다. 사용하고싶은 기능 클릭 후 오른쪽에 있는 Usage -> Via JavaScript 
 만약 초기화가 없다면 오른쪽의 Usage 부분이 없다.
-클릭해서 초기화 문장 복사 후 붙여넣기 가져온뒤  return 부분에 있는 생성자 수정
+클릭해서 초기화 문장 복사 후 붙여넣기 가져온뒤  return 부분에 있는 생성자 수정.
 dropdown 같은 경우에는 popperjs 가 필요함으로 npm i @popperjs.core 입력하여 npm 다운로드한다.
 ```
